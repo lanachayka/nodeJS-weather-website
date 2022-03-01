@@ -11,13 +11,13 @@ weatherForm.addEventListener('submit', (e) => {
     locationMessage.textContent = '';
     forecastMessage.textContent = '';
     fetch(`/weather?address=${location}`).then((response) => {
-        response.json().then(({ error, location, weatherDescription, temperature, feelslike }) => {
+        response.json().then(({ error, location, weatherDescription, temperature, feelslike, humidity }) => {
             if (error) {
                 errorMessage.textContent = error;
             } else {
                 errorMessage.textContent = '';
                 locationMessage.textContent = location;
-                forecastMessage.textContent = `${weatherDescription}. It is currently ${temperature} degress out. It is feels like ${feelslike} degress out.`
+                forecastMessage.textContent = `${weatherDescription}. It is currently ${temperature} degress out. It is feels like ${feelslike} degress out. The humidity is ${humidity}%.`
             }
         });
     });
